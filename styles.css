@@ -1,0 +1,101 @@
+// Variables para colores y estilos básicos
+$bg-body: #f2f2f2;
+$bg-calculator: #fff;
+$display-bg: #222;
+$display-color: #fff;
+$button-bg: #e0e0e0;
+$button-hover: #d0d0d0;
+$operator-bg: #ff9500;
+$operator-hover: darken($operator-bg, 10%);
+$clear-bg: #ff3b30;
+$clear-hover: darken($clear-bg, 10%);
+$percent-bg: #34c759;
+$percent-hover: darken($percent-bg, 10%);
+
+body {
+  margin: 0;
+  padding: 0;
+  background: $bg-body;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.calculator {
+  width: 320px;
+  background: $bg-calculator;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  .display {
+    background: $display-bg;
+    color: $display-color;
+    font-size: 2rem;
+    text-align: right;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1px;
+    background: #ccc;
+
+    button {
+      background: $button-bg;
+      border: none;
+      font-size: 1.5rem;
+      padding: 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover {
+        background: $button-hover;
+      }
+    }
+
+    // El botón 0 ocupará dos columnas
+    button.zero {
+      grid-column: span 2;
+    }
+
+    // Estilo para los botones de operadores y el botón igual
+    button[data-value="/"],
+    button[data-value="*"],
+    button[data-value="-"],
+    button[data-value="+"],
+    button[data-value="="] {
+      background: $operator-bg;
+      color: white;
+
+      &:hover {
+        background: $operator-hover;
+      }
+    }
+
+    // Estilo para el botón limpiar y borrar
+    button[data-value="C"],
+    button[data-value="DEL"] {
+      background: $clear-bg;
+      color: white;
+
+      &:hover {
+        background: $clear-hover;
+      }
+    }
+
+    // Estilo para el botón de porcentaje
+    button[data-value="%"] {
+      background: $percent-bg;
+      color: white;
+
+      &:hover {
+        background: $percent-hover;
+      }
+    }
+  }
+}
